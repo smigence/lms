@@ -13,6 +13,27 @@ const getCourseDetail = "SELECT * FROM tbl_course,tbl_management_course, "+
 " and tbl_management_course.idManageCourse = "+
 " tbl_lesson.idManageCourse "+
 " and tbl_management_course.idManageCourse =? ";
+const getLesson = "SELECT * FROM tbl_course,tbl_lesson_learner,"+
+" tbl_learner_course, tbl_lesson, "+
+" tbl_file "+ 
+" WHERE tbl_lesson_learner.idCourseLearner =" +
+" tbl_learner_course.idLearnerCourse " +
+" and tbl_learner_course.idCourse = tbl_course.idCourse "+
+" and tbl_lesson_learner.idFile = tbl_file.idFile "+
+" and tbl_file.idLesson = tbl_lesson.idLesson" +
+" and tbl_learner_course.idLearnerCourse = ?";
+const getStatic = "SELECT *"+
+" FROM tbl_course, tbl_learner_course"+
+" WHERE  tbl_course.idCourse = tbl_learner_course.idCourse "+
+" and tbl_course.idCourse =?";
+const getStaticDetail = "SELECT * FROM tbl_course, tbl_learner_course, "+ 
+" tbl_lesson_learner , tbl_lesson, tbl_file "+
+" WHERE tbl_learner_course.idLearner = ?"+
+" and tbl_course.idCourse = ?"+
+" and tbl_learner_course.idLearnerCourse "+ 
+"= tbl_lesson_learner.idCourseLearner"+
+" and tbl_lesson_learner.idFile = tbl_file.idFile"+
+" and tbl_lesson.idLesson = tbl_file.idLesson";
 
 const port = "3001";
 
@@ -32,7 +53,7 @@ var con =   mysql.createConnection ({
   host: "localhost",
   user: "root",
   password: "",
-  database: "react_app"
+  database: "lmssystem"
 });
 
 function getData (sql,link) {
@@ -50,7 +71,20 @@ function getDataByOneId (sql,link) {
     console.log(sql);
     con.query(sql,(err,result,fields) => {
       if(err) throw err;
-      // console.log(result);
+      console.log(result);
+      if(result===undefined) res.json({notification: "Data not found"})
+      else res.json(result);
+    });
+  });
+}
+
+function getDataByTwoId (sql,link) {
+  router.get(link, function(req, res, next) {
+    sql = sqlString.format(sql,[req.params.id1,req.params.id2])
+    console.log(sql);
+    con.query(sql,(err,result,fields) => {
+      if(err) throw err;
+      console.log(result);
       if(result===undefined) res.json({notification: "Data not found"})
       else res.json(result);
     });
@@ -76,6 +110,22 @@ function postDataLogin (link) {
   });
 }
 
+function UpdateCourse (link) {
+  router.post(link, (req,res,next) => {
+    const account = req.body;
+    const sql = sqlString.format("UPDATE tbl_course SET `title`=?,`description`=?"+
+    " WHERE tbl_course.idCourse =?",
+    [account.title,account.descript,req.params.id]);
+    con.query(sql,(err,result,fields) => {
+      if(err) throw err;
+      res.send("Yes");
+      }
+    )
+  });
+}
+
+
+
 con.connect (err => {
   if(err) throw err;
   getData(getAllUser,'/');
@@ -83,6 +133,10 @@ con.connect (err => {
   getDataByOneId(getCourseManage,"/courseManage/:id")
   getDataByOneId(getCourseLearn,"/courseLearn/:id")
   getDataByOneId(getCourseDetail,"/course/:id")
+  getDataByOneId(getStatic,"/static/:id")
+  getDataByOneId(getLesson,"/lesson/:id")
+  getDataByTwoId(getStaticDetail,"/staticDetail/:id1/:id2")
+  UpdateCourse("/updateCourse/:id")
 });
 
 module.exports = router;

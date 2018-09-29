@@ -5,7 +5,7 @@ import axios from 'axios';
 import AsyncCp from './component/AsyncCp';
 
 const instanceAxios = axios.create({
-  baseURL: 'http://localhost:3001'
+  baseURL: 'http://localhost:3002'
 });
 
 class App extends Component {
