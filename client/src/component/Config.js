@@ -1,3 +1,6 @@
-const api_link = '/courseManage/';
-const add_api_link = '/login';
-export default { api_link, add_api_link };
+const api_link = '/';
+const login_api = '/login'
+const add_api_link = '';
+
+export default {api_link,add_api_link,login_api};
+

@@ -53,7 +53,7 @@ var con =   mysql.createConnection ({
   host: "localhost",
   user: "root",
   password: "",
-  database: "lmssystem"
+  database: "react_app"
 });
 
 function getData (sql,link) {

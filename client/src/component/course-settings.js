@@ -3,7 +3,6 @@ import Sidebar from './SideBar';
 import Header from './Header';
 import BreadCrum from './LessonHeader';
 import General from './settings-general';
-import {Link} from 'react-router-dom';
 import AddLesson from './settings-lesson';
 import AddStudent from './settings-student';
 

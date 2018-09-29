@@ -4,11 +4,6 @@ import Course from './Course';
 import Header from './Header';
 
 class Homepage extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     const hrefLink = 'https://youtu.be/s6zR2T9vn2c';
     const imageLink = 'images/pic01.jpg';

@@ -5,46 +5,80 @@ import axios from 'axios';
 import AsyncCp from './component/AsyncCp';
 
 const instanceAxios = axios.create({
-  baseURL: 'http://localhost:3002'
+  baseURL: 'http://localhost:3001'
 });
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {mailAddress: "",
+          password: "",
+          loginResult: ""
+        };
 
-  state = { accounts: [] };
+    this.emailChangeHandle = this.emailChangeHandle.bind(this);
+    this.passwordChangeHandle =this.passwordChangeHandle.bind(this);
+    this.submitClickHandle = this.submitClickHandle.bind(this);
+  }
 
-  // submitForm () {
-  //   instanceAxios.post(conf.add_api_link,{email: 'trinhgiang520@gmail.com', password: '123456'})
-  //   .then(res => {
-  //     if(res.data===false) console.log("Login Fail")
-  //     else console.log(res.data.name);
-  //   }).catch(err => {
-  //     console.log("Fail");
-  //   });
-  // }
+  emailChangeHandle (event) {
+    this.setState({mailAddress: event.target.value})
+  }
 
-  // componentDidMount () {
-  //   const x=2;
-  //   conf.api_link+=x;
-  //   fetch (conf.api_link)
-  //   .then(res => res.json())
-  //   .then(accounts => this.setState({accounts})); 
-  // }
+  passwordChangeHandle(event) {
+    this.setState({password: event.target.value})
+  }
+
+  submitClickHandle = () => {
+    console.log(this.state.mailAddress+" "+this.state.password);
+    instanceAxios.post(conf.login_api,{email: this.state.mailAddress, password: this.state.password})
+    .then(res => {
+      if(res.data===false) {
+        this.setState({loginResult: "Login Unsuccessfully"})
+        console.log(this.state.loginResult);
+      }
+      else {
+      this.setState({loginResult: ""});
+      console.log("Success");}
+    }).catch(err => {
+      console.log("Fail");
+    });
+  }
+  
+  getDataApi (key) {
+    conf.api_link+=key;
+    fetch (conf.api_link)
+    .then(res => res.json())
+    .then(accounts => this.setState({accounts})); 
+  }
+
+  componentDidMount () {
+    
+  }
   render() {
     return (
-      <Router >
-        <div>
-          <Switch>
-            <Route exact path='/' component={AsyncCp.Login}></Route>
-            <Route exact path='/homepage' component={AsyncCp.Home}></Route>
-            <Route exact path='/course' component={AsyncCp.Course}></Route>
-            <Route exact path='/list-lesson' component={AsyncCp.Lesson}></Route>
-            <Route exact path='/overview' component={AsyncCp.Overview}></Route>
-            <Route exact path='/statics' component={AsyncCp.Statics}></Route>
-            <Route exact path='/settings' component={AsyncCp.Settings}></Route>
-            <Route path='*' component={() => { return <div>Page not found</div> }}></Route>
-          </Switch>
-        </div>
-      </Router>
+            <Router >
+              <div>
+                    <Switch>
+                        <Route exact path = '/' render = {(props) => 
+                        (<AsyncCp.Login {...props} email={this.state.email} password={this.state.password} 
+                         onEmailChange = {this.emailChangeHandle} onPasswordChange = {this.passwordChangeHandle} 
+                         submitClick = {this.submitClickHandle} loginResult={this.state.loginResult}/>)}></Route>
+
+                        <Route exact path = '/homepage'   component = {AsyncCp.Home}></Route>
+
+                        <Route exact path = '/course'   component = {AsyncCp.Course}></Route>
+
+                        <Route exact path = '/list-lesson' component = {AsyncCp.Lesson}></Route>
+                        
+                        <Route path = '*' component = {() => {return <div>Page not found</div>}}></Route>
+
+                        <Route exact path='/overview' component={AsyncCp.Overview}></Route>
+                        <Route exact path='/statics' component={AsyncCp.Statics}></Route>
+                        <Route exact path='/settings' component={AsyncCp.Settings}></Route>
+                    </Switch>
+              </div>
+            </Router>
     );
   }
 }
