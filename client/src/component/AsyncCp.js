@@ -2,10 +2,10 @@ import React from 'react';
 import Loadable from 'react-loadable';
 
 const LoadingPage = () => { return <h3>Page is loading ... </h3> };
- 
+
 const Login = Loadable({
-    loader: () => import("./Login"),
-    loading: LoadingPage
+  loader: () => import("./Login"),
+  loading: LoadingPage
 });
 
 const Home = Loadable({
@@ -23,4 +23,19 @@ const Lesson = Loadable({
   loading: LoadingPage
 });
 
-export default {Login,Home,Course,Lesson};
+const Overview = Loadable({
+  loader: () => import("./course-overview"),
+  loading: LoadingPage
+});
+
+const Statics = Loadable({
+  loader: () => import("./course-statics"),
+  loading: LoadingPage
+});
+
+const Settings = Loadable({
+  loader: () => import("./course-settings"),
+  loading: LoadingPage
+});
+
+export default { Login, Home, Course, Lesson, Overview, Statics, Settings };
