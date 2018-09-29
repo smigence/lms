@@ -1,18 +1,18 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Sidebar extends React.Component {
-    render(){
+    render() {
         return (
             <div className="sidebar" data-background-color="white" data-active-color="danger">
-        
+
                 <div className="sidebar-wrapper">
                     <div className="logo">
                         <Link to="/homepage" className="simple-text">
                             Learning Management System
                         </Link>
                     </div>
-        
+
                     <ul className="nav">
                         <li className="active">
                             <Link to="/homepage">
@@ -21,7 +21,7 @@ class Sidebar extends React.Component {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/list-lesson">
+                            <Link to="/homepage">
                                 <i className="ti-user"></i>
                                 <p>Management Course</p>
                             </Link>
