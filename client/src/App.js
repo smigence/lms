@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-import {BrowserRouter as Router,Route,Switch,withRouter} from 'react-router-dom';
 import conf from './component/Config';
 import axios from 'axios';
 import AsyncCp from './component/AsyncCp';
 
 const instanceAxios = axios.create({
-  baseURL: 'http://localhost:3002'
+  baseURL: 'http://localhost:3001'
 });
 
 class App extends Component {
@@ -41,7 +39,6 @@ class App extends Component {
       }
       else {
       this.setState({loginResult: ""});
-      this.props.history.push("/homepage")
       console.log("Success");}
     }).catch(err => {
       console.log("Fail");
