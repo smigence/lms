@@ -31,7 +31,7 @@ class Element extends React.Component {
                     </div>
                 </td>
                 <td>
-                    <Link to='/Viewmore' className=""></Link>
+                    <Link to='/Viewmore' className="">View More</Link>
                 </td>
             </tr>
 

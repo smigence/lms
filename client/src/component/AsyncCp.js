@@ -38,4 +38,9 @@ const Settings = Loadable({
   loading: LoadingPage
 });
 
-export default { Login, Home, Course, Lesson, Overview, Statics, Settings };
+const Viewmore = Loadable({
+  loader: () => import("./statics-viewmore"),
+  loading: LoadingPage
+});
+
+export default { Login, Home, Course, Lesson, Overview, Statics, Settings, Viewmore };
