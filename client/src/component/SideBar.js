@@ -8,26 +8,26 @@ class Sidebar extends React.Component {
 
                 <div className="sidebar-wrapper">
                     <div className="logo">
-                        <Link to="/homepage" className="simple-text">
+                        <Link to="/" className="simple-text">
                             Learning Management System
                         </Link>
                     </div>
 
                     <ul className="nav">
                         <li className="active">
-                            <Link to="/homepage">
+                            <Link to="/">
                                 <i className="ti-panel"></i>
                                 <p>My Course</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/homepage">
+                            <Link to="/">
                                 <i className="ti-user"></i>
                                 <p>Management Course</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to="/homepage">
+                            <Link to="/">
                                 <i className="ti-view-list-alt"></i>
                                 <p>User Profile</p>
                             </Link>

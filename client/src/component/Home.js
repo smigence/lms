@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import AutoRedirect from './Redirect';
 import Sidebar from './SideBar';
 import Course from './Course';
 import Header from './Header';
@@ -10,8 +12,9 @@ class Homepage extends React.Component {
     const nameCourse = 'Nascetur nunc varius commodo';
     const description = 'Interdum amet accumsan placerat commodo ut amet aliquam blandit nunc tempor lobortis nunc non. Mi accumsan.';
 
+    if (this.props.account==="") ReactDOM.render(<AutoRedirect mode={0}/>,document.getElementById('root'));
     return (
-      <div className="wrapper">
+       <div className="wrapper">
         <Sidebar></Sidebar>
         <div className="main-panel" >
           <Header></Header>
