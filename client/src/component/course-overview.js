@@ -2,10 +2,14 @@ import React from 'react';
 import Sidebar from './SideBar';
 import Header from './Header';
 import BreadCrum from './LessonHeader';
+import GroupContent from './group-content';
 
 
 class Overview extends React.Component {
     render() {
+        const groupname = 'About Course';
+        const groupcontent = 'The problem with this syntax is that a different callback is created each time the LoggingButton renders. In most cases, this is fine. However, if this callback is passed as a prop to lower components, those components might do an extra re-rendering. We generally recommend binding in the constructor or using the class fields syntax, to avoid this sort of performance problem.';
+
         return (
             <div className="wrapper">
                 <Sidebar></Sidebar>
@@ -13,33 +17,10 @@ class Overview extends React.Component {
                     <Header></Header>
                     <BreadCrum></BreadCrum>
                     <div className="content thumbnails">
-                        <div className="col-sm-12 col-xl-6">
-                            <div className="card">
-                                <div className="card-header">About Course</div>
-                                <div className="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                                ut aliquip ex ea commodo consequat.
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                                ut aliquip ex ea commodo consequat.
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                                ut aliquip ex ea commodo consequat.
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                                ut aliquip ex ea commodo consequat.</div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 col-xl-6">
-                            <div className="card">
-                                <div className="card-header">Card title</div>
-                                <div className="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                                ut aliquip ex ea commodo consequat.</div>
-                            </div>
-                        </div>
-                        <div className="col-sm-12 col-xl-6">
-                            <div className="card">
-                                <div className="card-header">Card title</div>
-                                <div className="card-body">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                                ut aliquip ex ea commodo consequat.</div>
-                            </div>
-                        </div>
+                        <GroupContent groupname={groupname} groupcontent={groupcontent}></GroupContent>
+                        <GroupContent groupname={groupname} groupcontent={groupcontent}></GroupContent>
+                        <GroupContent groupname={groupname} groupcontent={groupcontent}></GroupContent>
+                        <GroupContent groupname={groupname} groupcontent={groupcontent}></GroupContent>
                     </div>
                 </div>
             </div>

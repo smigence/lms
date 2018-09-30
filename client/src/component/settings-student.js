@@ -1,5 +1,5 @@
 import React from 'react';
-import Element from './statics-element-addstudent';
+import Element from './settings-element-addstudent';
 import Pagination from './pagination';
 
 class AddStudent extends React.Component {
