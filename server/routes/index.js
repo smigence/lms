@@ -73,7 +73,9 @@ function getDataByOneId (sql,link) {
       if(err) throw err;
       console.log(result);
       if(result===undefined) res.json({notification: "Data not found"})
-      else res.json(result);
+      else {res.json(result);
+           console.log(result);
+      }
     });
   });
 }
