@@ -239,10 +239,23 @@ iframe {
   display: -ms-flexbox;
   display: flex;
   flex-wrap: wrap;
-  padding: 303px 65px 40px 65px;
+  padding: 150px 65px 40px 65px;
 }
 
 .login100-form-title {
+  font-family: Poppins-Regular;
+  font-size: 30px;
+  color: #555555;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+
+  width: 100%;
+  display: block;
+}
+.login102-form-title {
+  margin-top: 20%;
   font-family: Poppins-Regular;
   font-size: 30px;
   color: #555555;

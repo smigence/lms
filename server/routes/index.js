@@ -65,17 +65,15 @@ function getData (sql,link) {
   });
 }
 
-function getDataByOneId (sql,link) {
+function getDataByOneId (sql,link) {  
   router.get(link, function(req, res, next) {
     sql = sqlString.format(sql,[req.params.id])
-    console.log(sql);
     con.query(sql,(err,result,fields) => {
       if(err) throw err;
       console.log(result);
-      if(result===undefined) res.json({notification: "Data not found"})
-      else {res.json(result);
-           console.log(result);
-      }
+      if(result[0]===undefined) res.json({notification: "Data not found"})
+      else 
+        res.json(result);
     });
   });
 }
@@ -83,12 +81,12 @@ function getDataByOneId (sql,link) {
 function getDataByTwoId (sql,link) {
   router.get(link, function(req, res, next) {
     sql = sqlString.format(sql,[req.params.id1,req.params.id2])
-    console.log(sql);
     con.query(sql,(err,result,fields) => {
       if(err) throw err;
       console.log(result);
-      if(result===undefined) res.json({notification: "Data not found"})
-      else res.json(result);
+      if(result[0]===undefined) res.json({notification: "Data not found"})
+      else 
+        res.json(result);
     });
   });
 }
