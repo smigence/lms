@@ -19,7 +19,7 @@ const Course = Loadable({
 });
 
 const Lesson = Loadable({
-  loader: () => import("./Lesson"),
+  loader: () => import("./course-content"),
   loading: LoadingPage
 });
 
@@ -43,4 +43,18 @@ const Viewmore = Loadable({
   loading: LoadingPage
 });
 
-export default { Login, Home, Course, Lesson, Overview, Statics, Settings, Viewmore };
+const ManagementCourse = Loadable({
+  loader: () => import("./management-course"),
+  loading: LoadingPage
+});
+
+const AddLesson = Loadable({
+  loader: () => import("./settings-addlesson"),
+  loading: LoadingPage
+});
+
+export default {
+  Login, Home, Course, Lesson, Overview,
+  Statics, Settings, Viewmore, ManagementCourse,
+  AddLesson
+};

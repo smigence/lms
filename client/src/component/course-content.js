@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './SideBar';
 import Header from './Header';
-import BreadCrum from './LessonHeader';
+import BreadCrum from './mycourse-header';
 import GroupContent from './lesson-groupcontent';
 
 
@@ -14,7 +14,7 @@ class Lesson extends React.Component {
             <div div="wrapper">
                 <Sidebar></Sidebar>
                 <div className="main-panel" >
-                    <Header></Header>
+                    <Header headername='Course Content'></Header>
                     <BreadCrum></BreadCrum>
                     <div className="content thumbnails">
                         <GroupContent groupname={groupname} no={no}></GroupContent>

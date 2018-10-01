@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './SideBar';
 import Header from './Header';
-import BreadCrum from './LessonHeader';
+import BreadCrum from './managementcourse-header';
 import Element from './statics-element-addstudent';
 import Pagination from './pagination';
 
@@ -19,7 +19,7 @@ class Statics extends React.Component {
       <div className="wrapper">
         <Sidebar></Sidebar>
         <div className="main-panel" >
-          <Header></Header>
+          <Header headername='Statics'></Header>
           <BreadCrum></BreadCrum>
           <div className="content">
             <div className="col-sm-12 col-xl-6">
