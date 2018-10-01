@@ -49,9 +49,6 @@ class App extends Component {
                                                   })
         else return this.setState({loginResult: "", account: account})
         });
-
-      
-      
     }
     }).catch(err => {
       console.log("Fail");
