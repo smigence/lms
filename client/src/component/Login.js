@@ -1,6 +1,4 @@
 import React from 'react';
-import AutoRedirect from './auto-redirect';
-
 const input100 = {
     color: 'red'
 }
