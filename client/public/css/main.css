@@ -244,8 +244,21 @@ iframe {
 
 .login100-form-title {
   font-family: Poppins-Regular;
-  font-size: 20px;
+  font-size: 30px;
   color: #555555;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+
+  width: 100%;
+  display: block;
+}
+
+.login101-form-title {
+  font-family: cursive;
+  font-size: 15px;
+  color: #FF0000;
   line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -884,4 +897,11 @@ input.input100 {
     }
 
 
-    
+.sidebar .nav p,
+.off-canvas-sidebar .nav p {
+    margin: 0;
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}

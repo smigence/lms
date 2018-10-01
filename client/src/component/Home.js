@@ -15,9 +15,9 @@ class Homepage extends React.Component {
     if (this.props.account==="") ReactDOM.render(<AutoRedirect mode={0}/>,document.getElementById('root'));
     return (
        <div className="wrapper">
-        <Sidebar></Sidebar>
+        <Sidebar preloca={this.props.location.pathname}></Sidebar>
         <div className="main-panel" >
-          <Header></Header>
+          <Header headername='My Course'></Header>
           <div className="thumbnails">
             <Course hrefLink={hrefLink} nameCourse={nameCourse} imageLink={imageLink} description={description}></Course>
 

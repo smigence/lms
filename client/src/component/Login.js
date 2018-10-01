@@ -14,11 +14,10 @@ class Login extends React.Component {
                 <div className="wrap-login100">
                     <div className="login100-form validate-form">
 
-                        <span>{this.props.loginResult}</span>
-
                         <span className="login100-form-title p-b-34 m-b-20">
                             LMS Login
                         </span>
+                        <span className="login101-form-title p-b-20 m-b-20">{this.props.loginResult}</span>
                         <p>Email:</p>
                         <div className="wrap-input100 m-b-20 validate-input m-b-20" data-validate="Type user name">
                             <input onChange={this.props.onEmailChange} id="first" className="input100"
@@ -34,7 +33,8 @@ class Login extends React.Component {
                         <button className="login100-form-btn" onClick={this.props.submitClick}>
                                 Sign in
                             </button>
-                        </div>
+                        </div><br></br>
+
                     </div>
                     <div className="login100-more" style={{ backgroundImage: 'url("images/bg-01.jpg")' }}></div>
                     </div>

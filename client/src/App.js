@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch,withRouter } from 'react-router-
 import conf from './component/Config';
 import axios from 'axios';
 import AsyncCp from './component/AsyncCp';
-import AutoRedirect from './component/auto-redirect';
 
 const instanceAxios = axios.create({
   baseURL: 'http://localhost:3001'
@@ -103,13 +102,14 @@ class App extends Component {
                 <Switch>
                     <Route exact path = '/' render = {(props) => (<AsyncCp.Home {...props} courses = {this.state.courses}/>)}></Route>
 
-                    <Route exact path = '/course'   component = {AsyncCp.Course}></Route>
-
+                    <Route exact path = '/course' component = {AsyncCp.Course}></Route>
+                    <Route exact path = '/management-course' component = {AsyncCp.ManagementCourse}></Route>
                     <Route exact path = '/list-lesson' component = {AsyncCp.Lesson}></Route>
-
+                    <Route exact path = '/viewmore' component = {AsyncCp.Viewmore}></Route>
                     <Route exact path='/overview' component={AsyncCp.Overview}></Route>
                     <Route exact path='/statics' component={AsyncCp.Statics}></Route>
                     <Route exact path='/settings' component={AsyncCp.Settings}></Route>
+                    <Route exact path = '/addlesson' component = {AsyncCp.AddLesson}></Route>
                     
                     <Route path = '*' component = {() => {return <div>Page not found</div>}}></Route>
                 </Switch>

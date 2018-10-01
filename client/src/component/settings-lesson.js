@@ -1,6 +1,7 @@
 import React from 'react';
 import Element from './settings-element-addstudent';
 import Pagination from './pagination';
+import {Link} from 'react-router-dom';
 
 class AddLesson extends React.Component {
     render() {
@@ -37,8 +38,8 @@ class AddLesson extends React.Component {
                             </tbody>
                         </table>
                         <div className="card-footer">
-                        <button className="btn btn-sm btn-primary" type="submit">
-                            <i className="fa fa-dot-circle-o" />Add Lesson</button>
+                        <Link to='/addlesson' className="btn btn-sm btn-primary">
+                            <i className="fa fa-dot-circle-o" />Add Lesson</Link>
                     </div>
                     </div>
                     <Pagination></Pagination><br></br><br></br><br></br><br></br><br></br><br></br>
