@@ -43,12 +43,12 @@ class App extends Component {
       const link = /courseLearn/+account.idUser;
       fetch (link).then(res => res.json())
       .then(courses => {
-        if (courses.notification===undefined)   return this.setState({loginResult: "", account: account})
-          else return this.setState({loginResult: "",
-                    account: account,
-                    courses: courses
-      })});
-      
+        if (courses.notification===undefined)    return this.setState({loginResult: "",
+                                                          account: account,
+                                                          courses: courses
+                                                  })
+        else return this.setState({loginResult: "", account: account})
+        });
     }
     }).catch(err => {
       console.log("Fail");
