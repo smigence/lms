@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch,withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch,Redirect} from 'react-router-dom';
 import conf from './component/Config';
 import axios from 'axios';
 import AsyncCp from './component/AsyncCp';
@@ -14,8 +14,8 @@ class App extends Component {
         this.state = {mailAddress: "",
           password: "",
           loginResult: "",
-          accountState: "",
-          courses: ""
+          account: "",
+          courses: []
         };
 
     this.emailChangeHandle = this.emailChangeHandle.bind(this);
@@ -37,17 +37,17 @@ class App extends Component {
     .then(res => {
       if(res.data===false) {
         this.setState({loginResult: "Login Unsuccessfully"})
-        console.log(this.state.loginResult);
-
       }
       else {
       const account = res.data;
       const link = /courseLearn/+account.idUser;
-      fetch (link).then(res => res.data).
-      then(courses => this.setState({loginResult: "",
-      accountState: account,
-      courses: courses
-    }));
+      fetch (link).then(res => res.json())
+      .then(courses => {
+        if (courses.notification===undefined)   return this.setState({loginResult: "", account: account})
+          else return this.setState({loginResult: "",
+                    account: account,
+                    courses: courses
+      })});
       
     }
     }).catch(err => {
@@ -61,29 +61,8 @@ class App extends Component {
     .then(res => data=res.data)
   }
 
-  componentDidMount () {
-    
-
-    this.setState({ loginResult: "" });
-    console.log("Success");
-  }
-  // }).catch(err => {
-  //   console.log("Fail");
-  // });
-  // }
-
-  // getDataApi (key) {
-  //   conf.api_link+=key;
-  //   fetch (conf.api_link)
-  //   .then(res => res.json())
-  //   .then(accounts => this.setState({accounts})); 
-  // }
-
-  // componentDidMount () {
-
-  // }
   render() {
-    if (this.state.accountState==="") {
+    if (this.state.account==="") {
       return (
             <Router >
                     <Switch>
@@ -91,7 +70,7 @@ class App extends Component {
                         (<AsyncCp.Login {...props} email={this.state.email} password={this.state.password} 
                          onEmailChange = {this.emailChangeHandle} onPasswordChange = {this.passwordChangeHandle} 
                          submitClick = {this.submitClickHandle} loginResult={this.state.loginResult}/>)}></Route>
-                        <Route path = '*' component = {() => {return <div>Page not found</div>}}></Route>
+                        <Redirect  from='*' to='/' />
                     </Switch>
             </Router>
       );

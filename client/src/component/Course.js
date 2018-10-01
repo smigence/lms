@@ -9,7 +9,7 @@ class Course extends React.Component {
             <div className="box12">
                 <Link to='/overview' className="image fit"><img src={this.props.imageLink} alt="" /></Link>
                 <div className="inner">
-                    <h3><Link to='/overview'>{this.props.nameCourse}</Link></h3>
+                    <h3><Link to='/overview'>{this.props.title}</Link></h3>
                     <p>{this.props.description}</p>
                 </div>
                 <Link to='/overview' className="button big">Watch</Link>
