@@ -3,28 +3,23 @@ import Sidebar from './SideBar';
 import Header from './Header';
 import BreadCrum from './managementcourse-header';
 import GroupContent from './group-content';
-import createHistory from 'history/createBrowserHistory'
 
 class Overview extends React.Component {
+    componentDidMount() {
+        console.log(this.props.history);
+    }
     render() {
-        const groupname = 'About Course';
-        const groupcontent = 'The problem with this syntax is that a different callback is created each time the LoggingButton renders. In most cases, this is fine. However, if this callback is passed as a prop to lower components, those components might do an extra re-rendering. We generally recommend binding in the constructor or using the class fields syntax, to avoid this sort of performance problem.';
-
-        // const history = createHistory();
-        // const history = Window.history;
-        // console.log(String(hist));
-
+        let courses = this.props.coursesLeaner;
+        if (this.props.match.params==='management-course') courses=this.props.coursesManager;
         return (
             <div className="wrapper">
                 <Sidebar></Sidebar>
                 <div className="main-panel" >
                     <Header headername='Over View'></Header>
-                    <BreadCrum></BreadCrum>
+                    <BreadCrum id={this.props.match.params.id}></BreadCrum>
                     <div className="content thumbnails">
-                        <GroupContent groupname={groupname} groupcontent={groupcontent}></GroupContent>
-                        <GroupContent groupname={groupname} groupcontent={groupcontent}></GroupContent>
-                        <GroupContent groupname={groupname} groupcontent={groupcontent}></GroupContent>
-                        <GroupContent groupname={groupname} groupcontent={groupcontent}></GroupContent>
+                        <GroupContent groupname="Title" groupcontent={courses[this.props.match.params.id].title}></GroupContent>
+                        <GroupContent groupname="Description" groupcontent={courses[this.props.match.params.id].description}></GroupContent>
                     </div>
                 </div>
             </div>

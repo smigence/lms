@@ -5,9 +5,9 @@ class Sidebar extends React.Component {
     render() {
         let selectMyCourse = '';
         let selectManagementCourse = '';
-        if(this.props.preloca == '/'){
+        if(this.props.preloca === '/'){
             selectMyCourse = 'active';
-        } else if (this.props.preloca == '/management-course'){
+        } else if (this.props.preloca === '/management-course'){
             selectManagementCourse = 'active'; 
         }
     
