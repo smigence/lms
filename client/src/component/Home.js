@@ -19,7 +19,11 @@ class Homepage extends React.Component {
           <Header headername='My Course'></Header>
           <div className="thumbnails">
             {this.props.courses.length?this.props.courses.map((course,index) => 
+<<<<<<< HEAD
                 <Course key = {index} hrefLink={hrefLink} title={course.title} imageLink={imageLink} description={course.description} index={index}></Course>)
+=======
+                <Course key = {index} hrefLink={hrefLink} course={course} imageLink={imageLink} index={index}></Course>)
+>>>>>>> api_homepage
                 :<div className="login102-form-title p-b-34 m-b-20">You have no course</div>}
           </div>
         </div>

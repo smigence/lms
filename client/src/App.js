@@ -26,9 +26,11 @@ class App extends Component {
 
     this.fileChangeHandle = this.fileChangeHandle.bind(this);
     this.uploadClickHandle = this.uploadClickHandle.bind(this);
+
+    }
   
     fileChangeHandle(event) {
-    this.setState({ file: event.target.files[0] })
+    this.setState({ file: event.target.files[0] });
     // this.changeState = this.changeState.bind(this);
     }
 
@@ -114,8 +116,8 @@ class App extends Component {
                     <Route exact path = '/' render = {(props) => (<AsyncCp.Home {...props} courses = {this.state.coursesLeaner}/>)}></Route>
                     <Route exact path = '/management-course' render = {(props) => <AsyncCp.ManagementCourse {...props} courses={this.state.coursesManager}/>}></Route>
                     <Route exact path = '/list-lesson' component = {AsyncCp.Lesson}></Route>
-                    <Route exact path='/overview/:id' render = { (props) => <AsyncCp.Overview {...props} coursesLeaner={this.state.coursesLeaner}
-                    coursesManager = {this.state.coursesManager}/>}></Route>
+                    <Route exact path='/overview/:id/:type' render = { (props) => <AsyncCp.Overview {...props} coursesLeaner={this.state.coursesLeaner}
+                    coursesManager = {this.state.coursesManager} account={this.state.account}/>}></Route>
                     <Route exact path = '/viewmore' component = {AsyncCp.Viewmore}></Route>
                     <Route exact path='/statics' component={AsyncCp.Statics}></Route>
                     <Route exact path='/settings' component={AsyncCp.Settings}></Route>
