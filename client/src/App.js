@@ -16,14 +16,21 @@ class App extends Component {
           loginResult: "",
           account: "",
           coursesLeaner: [],
-          coursesManager: []
+          coursesManager: [],
+          file : {}
         };
 
     this.emailChangeHandle = this.emailChangeHandle.bind(this);
     this.passwordChangeHandle = this.passwordChangeHandle.bind(this);
     this.submitClickHandle = this.submitClickHandle.bind(this);
-   // this.changeState = this.changeState.bind(this);
-  }
+
+    this.fileChangeHandle = this.fileChangeHandle.bind(this);
+    this.uploadClickHandle = this.uploadClickHandle.bind(this);
+  
+    fileChangeHandle(event) {
+    this.setState({ file: event.target.files[0] })
+    // this.changeState = this.changeState.bind(this);
+    }
 
   emailChangeHandle(event) {
     this.setState({ mailAddress: event.target.value });
@@ -113,11 +120,10 @@ class App extends Component {
                     <Route exact path='/statics' component={AsyncCp.Statics}></Route>
                     <Route exact path='/settings' component={AsyncCp.Settings}></Route>
                     <Route exact path = '/addlesson' component = {AsyncCp.AddLesson}></Route>
-                    
                     <Route path = '*' component = {() => {return <div>Page not found</div>}}></Route>
                 </Switch>
         </Router>
-);
+      );
     }
   }
 }
