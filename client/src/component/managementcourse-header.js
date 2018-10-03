@@ -8,7 +8,11 @@ class BreadCrum extends React.Component {
 
                 <ul className="nav navbar-nav d-md-down-none">
                     <li className="nav-item px-3">
+<<<<<<< HEAD
                         <Link to={'/overview/'+this.props.id}>Over View</Link>
+=======
+                        <Link to={'/overview/'+this.props.id+'/'+this.props.type}>Over View</Link>
+>>>>>>> api_homepage
                     </li>
                     <li className="nav-item px-3">
                         <Link to='/list-lesson'>Course Content</Link>
