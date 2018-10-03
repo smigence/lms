@@ -9,6 +9,10 @@ import AddStudent from './settings-student';
 
 class Settings extends React.Component {
     render() {
+
+        const coursename = 'Introduction of ReactJS';
+        const coursedescription = 'Yêu nước là gì? Nhà văn Ilia Erenbua có một ý văn thật sâu sắc: dòng suối chảy vào sông, con sông đổ vào biển lớn, tình yêu quê hương trở thành tình yêu đất nước. Vậy tình yêu nước đâu phải điều gì xa xôi. Yêu nước là yêu chính người thân trong gia đình mình, yêu bố mẹ; anh chị,... yêu cái cây trước cửa, yêu con đường đến trường... Lớp lớp, triệu triệu con người Việt Nam đã từng xả thân hi sinh để bảo vệ những người mình yêu quý, những vật mình thân quen; động lực chiến đấu của họ chính từ tình yêu đối với những gì bình dị nhất.'
+
         return (
             <div div="wrapper">
                 <Sidebar></Sidebar>
@@ -41,7 +45,10 @@ class Settings extends React.Component {
                                             </li>
                                         </ul>
                                         <div className="tab-content">
-                                            <div className="tab-pane active" id="general" role="tabpanel"><General></General></div>
+                                            <div className="tab-pane active" id="general" role="tabpanel">
+                                                <General coursename={coursename} coursedescription={coursedescription}
+                                                onFileChange={this.props.onFileChange} uploadClick={this.props.uploadClick}uploadResult={this.props.uploadResult}></General>
+                                            </div>
                                             <div className="tab-pane" id="lesson" role="tabpanel"><AddLesson></AddLesson></div>
                                             <div className="tab-pane" id="student" role="tabpanel"><AddStudent></AddStudent></div>
                                         </div>

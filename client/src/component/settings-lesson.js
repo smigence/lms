@@ -1,5 +1,5 @@
 import React from 'react';
-import Element from './settings-element-addstudent';
+import Element from './settings-element-addlesson';
 import Pagination from './pagination';
 import {Link} from 'react-router-dom';
 
@@ -23,7 +23,7 @@ class AddLesson extends React.Component {
                                     <th>Name</th>
                                     <th>Lenght</th>
                                     <th>Link Video</th>
-                                    <th>Select</th>
+                                    <th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
