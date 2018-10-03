@@ -69,27 +69,27 @@ function getData(sql, link) {
   });
 }
 
-function getDataByOneId(sql, link) {
-  router.get(link, function (req, res, next) {
-    sql = sqlString.format(sql, [req.params.id])
-    con.query(sql, (err, result, fields) => {
-      if (err) throw err;
+function getDataByOneId (sql,link) {  
+  router.get(link, function(req, res, next) {
+    sql = sqlString.format(sql,[req.params.id])
+    con.query(sql,(err,result,fields) => {
+      if(err) throw err;
       console.log(result);
-      if (result[0] === undefined) res.json({ notification: "Data not found" })
-      else
+      if(result[0]===undefined) res.json({notification: "Data not found"})
+      else 
         res.json(result);
     });
   });
 }
 
-function getDataByTwoId(sql, link) {
-  router.get(link, function (req, res, next) {
-    sql = sqlString.format(sql, [req.params.id1, req.params.id2])
-    con.query(sql, (err, result, fields) => {
-      if (err) throw err;
+function getDataByTwoId (sql,link) {
+  router.get(link, function(req, res, next) {
+    sql = sqlString.format(sql,[req.params.id1,req.params.id2])
+    con.query(sql,(err,result,fields) => {
+      if(err) throw err;
       console.log(result);
-      if (result[0] === undefined) res.json({ notification: "Data not found" })
-      else
+      if(result[0]===undefined) res.json({notification: "Data not found"})
+      else 
         res.json(result);
     });
   });

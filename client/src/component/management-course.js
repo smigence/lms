@@ -4,6 +4,9 @@ import AutoRedirect from './Redirect';
 import Sidebar from './SideBar';
 import Course from './Course';
 import Header from './Header';
+import AsyncCp from './AsyncCp';
+import { BrowserRouter,Route } from 'react-router-dom';
+
 
 class ManagementCourse extends React.Component {
   render() {
@@ -19,17 +22,9 @@ class ManagementCourse extends React.Component {
         <div className="main-panel" >
           <Header headername='Management Course'></Header>
           <div className="thumbnails">
-            <Course hrefLink={hrefLink} nameCourse={nameCourse} imageLink={imageLink} description={description}></Course>
-
-            <Course hrefLink={hrefLink} nameCourse={nameCourse} imageLink={imageLink} description={description}></Course>
-
-            <Course hrefLink={hrefLink} nameCourse={nameCourse} imageLink={imageLink} description={description}></Course>
-
-            <Course hrefLink={hrefLink} nameCourse={nameCourse} imageLink={imageLink} description={description}></Course>
-
-            <Course hrefLink={hrefLink} nameCourse={nameCourse} imageLink={imageLink} description={description}></Course>
-
-            <Course hrefLink={hrefLink} nameCourse={nameCourse} imageLink={imageLink} description={description}></Course>
+          {this.props.courses.length?this.props.courses.map((course,index) => 
+                <Course key = {index} hrefLink={hrefLink} title={course.title} imageLink={imageLink} description={course.description} index={index}></Course>)
+                :<div className="login102-form-title p-b-34 m-b-20">You have no course</div>}
           </div>
         </div>
       </div>
