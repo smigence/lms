@@ -16,37 +16,30 @@ class Statics extends React.Component {
     const Progress = '40%';
 
     return (
-      <div className="wrapper">
-        <Sidebar></Sidebar>
-        <div className="main-panel" >
-          <Header headername='Statics'></Header>
-          <BreadCrum></BreadCrum>
-          <div className="content">
-            <div className="col-sm-12 col-xl-6">
-              <table className="table table-responsive-sm table-outline mb-0">
-                <thead className="thead-dark">
-                  <tr>
-                    <th>No.</th>
-                    <th>Email</th>
-                    <th >Student</th>
-                    <th>Progress</th>
-                    <th>View More</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
-                  <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
-                  <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
-                  <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
-                  <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
-                  <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
-                  <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
-                  <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
-                </tbody>
-              </table>
-              <Pagination></Pagination>
-            </div>
-          </div>
+      <div className="content">
+        <div className="col-sm-12 col-xl-6">
+          <table className="table table-responsive-sm table-outline mb-0">
+            <thead className="thead-dark">
+              <tr>
+                <th>No.</th>
+                <th>Email</th>
+                <th >Student</th>
+                <th>Progress</th>
+                <th>View More</th>
+              </tr>
+            </thead>
+            <tbody>
+              <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
+              <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
+              <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
+              <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
+              <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
+              <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
+              <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
+              <Element No={No} Email={Email} Student={Student} Progress={Progress} ></Element>
+            </tbody>
+          </table>
+          <Pagination></Pagination>
         </div>
       </div>
     );

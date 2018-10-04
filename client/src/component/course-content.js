@@ -11,19 +11,14 @@ class Lesson extends React.Component {
         const groupname = 'Introduction ReactJS'
 
         return (
-            <div div="wrapper">
-                <Sidebar></Sidebar>
-                <div className="main-panel" >
-                    <Header headername='Course Content'></Header>
-                    <BreadCrum></BreadCrum>
-                    <div className="content thumbnails">
-                        <GroupContent groupname={groupname} no={no}></GroupContent>
-                        <GroupContent groupname={groupname} no={no}></GroupContent>
-                        <GroupContent groupname={groupname} no={no}></GroupContent>
-                        <GroupContent groupname={groupname} no={no}></GroupContent>
-                    </div>
-                </div>
+
+            <div className="content thumbnails">
+                <GroupContent groupname={groupname} no={no}></GroupContent>
+                <GroupContent groupname={groupname} no={no}></GroupContent>
+                <GroupContent groupname={groupname} no={no}></GroupContent>
+                <GroupContent groupname={groupname} no={no}></GroupContent>
             </div>
+
         );
     }
 }

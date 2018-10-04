@@ -4,38 +4,47 @@ import Header from './Header';
 import BreadCrum0 from './managementcourse-header';
 import BreadCrum1 from './mycourse-header';
 import GroupContent from './group-content';
+import Lesson from './course-content';
+import Statics from './course-statics';
+import Settings from './course-settings';
 
 class Overview extends React.Component {
-<<<<<<< HEAD
-    componentDidMount() {
-        console.log(this.props.history);
-    }
-    render() {
-        let courses = this.props.coursesLeaner;
-        if (this.props.match.params==='management-course') courses=this.props.coursesManager;
-=======
 
     render() {
         let courses = this.props.coursesManager;
         let BreadCrum = BreadCrum0;
-        if(this.props.match.params.type==='1') {
+        if (this.props.match.params.type === '1') {
             courses = this.props.coursesLeaner;
             BreadCrum = BreadCrum1;
         }
->>>>>>> api_homepage
         return (
             <div className="wrapper">
                 <Sidebar></Sidebar>
                 <div className="main-panel" >
                     <Header headername='Over View'></Header>
-<<<<<<< HEAD
-                    <BreadCrum id={this.props.match.params.id}></BreadCrum>
-=======
-                    <BreadCrum id={this.props.match.params.id} type={this.props.match.params.type}></BreadCrum>
->>>>>>> api_homepage
-                    <div className="content thumbnails">
-                        <GroupContent groupname="Title" groupcontent={courses[this.props.match.params.id].title}></GroupContent>
-                        <GroupContent groupname="Description" groupcontent={courses[this.props.match.params.id].description}></GroupContent>
+                    <ul className="nav nav-tabs" role="tablist">
+                        <li className="nav-item">
+                            <a className="nav-link active" data-toggle="tab" href='#overview' role="tab" aria-controls="overview">Overview</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="tab" href="#content" role="tab"
+                                aria-controls="content">Course Contents</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="tab" href="#statics" role="tab" aria-controls="statics">Statics</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">Settings</a>
+                        </li>
+                    </ul>
+                    <div className="tab-content m-t-20">
+                        <div className="tab-pane active" id="overview" role="tabpanel">
+                            <GroupContent groupname="Title" groupcontent={courses[this.props.match.params.id].title}></GroupContent>
+                            <GroupContent groupname="Description" groupcontent={courses[this.props.match.params.id].description}></GroupContent>
+                        </div>
+                        <div className="tab-pane" id="content" role="tabpanel"><Lesson></Lesson></div>
+                        <div className="tab-pane" id="statics" role="tabpanel"><Statics></Statics></div>
+                        <div className="tab-pane" id="settings" role="tabpanel"><Settings></Settings></div>
                     </div>
                 </div>
             </div>
