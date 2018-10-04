@@ -106,7 +106,7 @@ function getStaticById (link) {
     " and tbl_course.idCourse =?",[req.params.id])
     con.query(sql,(err,result,fields) => {
       if(err) throw err;
-      console.log(result);
+      // console.log(result);
       if(result[0]===undefined) res.json({notification: "Data not found"})
       else 
         res.json(result);
@@ -119,7 +119,7 @@ function getDataByTwoId (sql,link) {
     sql = sqlString.format(sql,[req.params.id1,req.params.id2])
     con.query(sql,(err,result,fields) => {
       if(err) throw err;
-      console.log(result  );
+      // console.log(result);
       if(result[0]===undefined) res.json({notification: "Data not found"})
       else 
         res.json(result);
@@ -136,11 +136,11 @@ function postDataLogin(link) {
       if (err) throw err;
       if (result[0] !== undefined) {
         res.send(result[0]);
-        console.log("Y");
+        // console.log("Y");
       }
       else {
         res.send("false");
-        console.log("N");
+        // console.log("N");
       }
     })
   });
@@ -148,10 +148,10 @@ function postDataLogin(link) {
 
 function UpdateCourse(link) {
   router.post(link, (req, res, next) => {
+    console.log(req.body, req.params);
     const account = req.body;
-    const sql = sqlString.format("UPDATE tbl_course SET `title`=?,`description`=?" +
-      " WHERE tbl_course.idCourse =?",
-      [account.title, account.descript, req.params.id]);
+    const sql = sqlString.format("UPDATE tbl_course SET `title`=?,`description`=?  WHERE tbl_course.idCourse =?",
+      [account.coursename, account.coursedescription, req.params.id]);
     con.query(sql, (err, result, fields) => {
       if (err) throw err;
       res.send("Yes");
@@ -162,13 +162,13 @@ function UpdateCourse(link) {
 
 function UpdateUpload(link) {
   router.post('/', (req, res) => {
-    console.log(req.files.selectedfile);
+    // console.log(req.files.selectedfile);
     if (req.files.selectedfile) {
       var file = req.files.selectedfile.name,
         filename = file.name;
         req.files.selectedfile.mv("./upload/" + req.files.selectedfile.name, function (err) {
         if (err) {
-          console.log(err);
+          // console.log(err);
           res.json(err);
         }
         else {
