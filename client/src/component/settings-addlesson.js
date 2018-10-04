@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import AutoRedirect from './Redirect';
 import Sidebar from './SideBar';
 import Header from './Header';
-import BreadCrum from './managementcourse-header';
 import AddLesson from './settings-lesson';
 import AddStudent from './settings-student';
 

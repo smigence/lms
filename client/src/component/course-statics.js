@@ -1,7 +1,4 @@
 import React from 'react';
-import Sidebar from './SideBar';
-import Header from './Header';
-import BreadCrum from './managementcourse-header';
 import Element from './statics-element-addstudent';
 import Pagination from './pagination';
 

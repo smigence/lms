@@ -26,7 +26,7 @@ class App extends Component {
     this.submitClickHandle = this.submitClickHandle.bind(this);
 
     this.fileChangeHandle = this.fileChangeHandle.bind(this);
-    this.uploadClickHandle = this.uploadClickHandle.bind(this);
+    //this.uploadClickHandle = this.uploadClickHandle.bind(this);
 
   }
 
@@ -43,7 +43,7 @@ class App extends Component {
     this.setState({ password: event.target.value });
   }
 
-  /* changeState(account,courses) {
+  /* changeState(account,courses) { 
      this.setState({loginResult: "",
                          account: account,
                          coursesLeaner: courses

@@ -1,7 +1,4 @@
 import React from 'react';
-import Sidebar from './SideBar';
-import Header from './Header';
-import BreadCrum from './managementcourse-header';
 import General from './settings-general';
 import AddLesson from './settings-lesson';
 import AddStudent from './settings-student';

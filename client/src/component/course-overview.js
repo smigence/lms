@@ -1,8 +1,6 @@
 import React from 'react';
 import Sidebar from './SideBar';
 import Header from './Header';
-import BreadCrum0 from './managementcourse-header';
-import BreadCrum1 from './mycourse-header';
 import GroupContent from './group-content';
 import Lesson from './course-content';
 import Statics from './course-statics';
@@ -12,10 +10,8 @@ class Overview extends React.Component {
 
     render() {
         let courses = this.props.coursesManager;
-        let BreadCrum = BreadCrum0;
         if (this.props.match.params.type === '1') {
             courses = this.props.coursesLeaner;
-            BreadCrum = BreadCrum1;
         }
         return (
             <div className="wrapper">
