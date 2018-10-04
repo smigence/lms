@@ -18,7 +18,9 @@ class App extends Component {
       account: "",
       coursesLeaner: [],
       coursesManager: [],
-      file: {}
+      file: {},
+      coursename: "",
+      coursedescription: ""
     };
 
     this.emailChangeHandle = this.emailChangeHandle.bind(this);
@@ -28,6 +30,9 @@ class App extends Component {
     this.fileChangeHandle = this.fileChangeHandle.bind(this);
     //this.uploadClickHandle = this.uploadClickHandle.bind(this);
 
+    this.onGeneralSettingsSubmit = this.onGeneralSettingsSubmit.bind(this);
+    this.coursenameChangeHandle = this.coursenameChangeHandle.bind(this);
+    this.coursedescriptionChangeHandle = this.coursedescriptionChangeHandle.bind(this);
   }
 
   fileChangeHandle(event) {
@@ -42,6 +47,15 @@ class App extends Component {
   passwordChangeHandle(event) {
     this.setState({ password: event.target.value });
   }
+
+  coursenameChangeHandle(event) {
+    this.setState({ coursename: event.target.value });
+  }
+
+  coursedescriptionChangeHandle(event) {
+    this.setState({ coursedescription: event.target.value });
+  }
+
 
   /* changeState(account,courses) {
      this.setState({loginResult: "",
@@ -90,6 +104,22 @@ class App extends Component {
       });
   }
 
+  onGeneralSettingsSubmit = (eve, idcourse, defaultname, defaultdescription) => {
+    // eve.preventDefault();
+    this.state.coursename == '' ?  this.state.coursename = defaultname : true;
+    this.state.coursedescription == '' ?  this.state.coursedescription = defaultdescription : true;
+    instanceAxios.post(conf.update_course_general_api + '/' + idcourse, {
+      coursename: this.state.coursename,
+      coursedescription: this.state.coursedescription
+    })
+      .then(res => {
+        if(res.data == 'Yes') console.log('Ok');
+        else console.log('lel');
+      }).catch(errr => {
+        console.log("Fail");
+      })
+  };
+
   uploadClickHandle = (eve) => {
     eve.preventDefault();
     console.log(this.state.file);
@@ -136,8 +166,11 @@ class App extends Component {
             <Route exact path='/' render={(props) => (<AsyncCp.Home {...props} courses={this.state.coursesLeaner} />)}></Route>
             <Route exact path='/management-course' render={(props) => <AsyncCp.ManagementCourse {...props} courses={this.state.coursesManager} />}></Route>
             <Route exact path='/overview/:id/:type' render={(props) => <AsyncCp.Overview {...props}
-              coursesLeaner={this.state.coursesLeaner} coursesManager={this.state.coursesManager} account={this.state.account} 
-              />}></Route>
+              coursesLeaner={this.state.coursesLeaner} coursesManager={this.state.coursesManager} account={this.state.account}
+              onGeneralSettingsSubmit={this.onGeneralSettingsSubmit}
+              coursenameChangeHandle={this.coursenameChangeHandle}
+              coursedescriptionChangeHandle={this.coursedescriptionChangeHandle} />}>
+            </Route>
             <Route exact path='/viewmore' component={AsyncCp.Viewmore}></Route>
             <Route exact path='/addlesson' component={AsyncCp.AddLesson}></Route>
             <Route path='*' component={() => { return <div>Page not found</div> }}></Route>

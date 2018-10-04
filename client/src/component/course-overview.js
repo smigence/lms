@@ -44,7 +44,15 @@ class Overview extends React.Component {
                         </div>
                         <div className="tab-pane" id="content" role="tabpanel"><Lesson></Lesson></div>
                         <div className="tab-pane" id="statics" role="tabpanel"><Statics></Statics></div>
-                        <div className="tab-pane" id="settings" role="tabpanel"><Settings></Settings></div>
+                        <div className="tab-pane" id="settings" role="tabpanel">
+                            <Settings coursename={courses[this.props.match.params.id].title}
+                                coursedescription={courses[this.props.match.params.id].description}
+                                onGeneralSettingsSubmit={this.props.onGeneralSettingsSubmit}
+                                coursenameChangeHandle={this.props.coursenameChangeHandle}
+                                coursedescriptionChangeHandle={this.props.coursedescriptionChangeHandle}
+                                idcourse={courses[this.props.match.params.id].idCourse}>
+                            </Settings>
+                        </div>
                     </div>
                 </div>
             </div>
