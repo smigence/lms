@@ -44,12 +44,10 @@ var express = require('express');
 var mysql = require('mysql');
 var cors = require('cors');
 var sqlString = require('sqlstring');
-var fs = require('fs');
 
 
 
 var router = express.Router();
-var app = express();
 router.use(cors());
 router.use(express.json());
 
