@@ -11,7 +11,7 @@ class AddStudent extends React.Component {
 
 
         return(
-            <div className="col-sm-12 col-xl-6">
+            <div className="col-sm-12 col-xl-6 m-t-20">
                 <div className="col-sm-12 col-xl-6">
                     <div className="card">
                         <table className="table table-striped table-bordered datatable dataTable no-footer">
