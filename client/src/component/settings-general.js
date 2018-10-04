@@ -1,5 +1,4 @@
 import React from 'react';
-import Element from './statics-viewmore-element';
 
 class General extends React.Component {
     render() {
