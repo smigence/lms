@@ -78,6 +78,7 @@ function getCourseDetailById (link) {
 }
 
 function getLessonById (link) {  
+<<<<<<< HEAD
   router.get(link, function(req, res, next) {
     sql = sqlString.format("SELECT * FROM tbl_course,tbl_lesson_learner," +
     " tbl_learner_course, tbl_lesson, " +
@@ -100,6 +101,30 @@ function getLessonById (link) {
 
 function getStaticById (link) {  
   router.get(link, function(req, res, next) {
+=======
+  router.get(link, function(req, res, next) {
+    sql = sqlString.format("SELECT * FROM tbl_course,tbl_lesson_learner," +
+    " tbl_learner_course, tbl_lesson, " +
+    " tbl_file " +
+    " WHERE tbl_lesson_learner.idCourseLearner =" +
+    " tbl_learner_course.idLearnerCourse " +
+    " and tbl_learner_course.idCourse = tbl_course.idCourse " +
+    " and tbl_lesson_learner.idFile = tbl_file.idFile " +
+    " and tbl_file.idLesson = tbl_lesson.idLesson" +
+    " and tbl_learner_course.idLearnerCourse = ?",[req.params.id])
+    con.query(sql,(err,result,fields) => {
+      if(err) throw err;
+      console.log(result);
+      if(result[0]===undefined) res.json({notification: "Data not found"})
+      else 
+        res.json(result);
+    });
+  });
+}
+
+function getStaticById (link) {  
+  router.get(link, function(req, res, next) {
+>>>>>>> fix server
     sql = sqlString.format("SELECT *" +
     " FROM tbl_course, tbl_learner_course" +
     " WHERE  tbl_course.idCourse = tbl_learner_course.idCourse " +
