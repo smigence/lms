@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter,Link,Route } from 'react-router-dom';
-import AsyncCp from './AsyncCp';
+import { Link } from 'react-router-dom';
 
 class Course extends React.Component {
 

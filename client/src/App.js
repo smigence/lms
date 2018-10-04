@@ -26,7 +26,7 @@ class App extends Component {
     this.submitClickHandle = this.submitClickHandle.bind(this);
 
     this.fileChangeHandle = this.fileChangeHandle.bind(this);
-    this.uploadClickHandle = this.uploadClickHandle.bind(this);
+    //this.uploadClickHandle = this.uploadClickHandle.bind(this);
 
   }
 
