@@ -1,9 +1,11 @@
 import React from 'react';
 import Element from './settings-element-addlesson';
 import Pagination from './pagination';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 class AddLesson extends React.Component {
+
     render() {
 
         const No = '01.';
@@ -13,7 +15,7 @@ class AddLesson extends React.Component {
 
 
         return (
-            <div className="col-sm-12 col-xl-6">
+            <div className="col-sm-12 col-xl-6 m-t-20">
                 <div className="col-sm-12 col-xl-6">
                     <div className="card">
                         <table className="table table-striped table-bordered datatable dataTable no-footer">
@@ -38,9 +40,10 @@ class AddLesson extends React.Component {
                             </tbody>
                         </table>
                         <div className="card-footer">
-                        <Link to='/addlesson' className="btn btn-sm btn-primary">
-                            <i className="fa fa-dot-circle-o" />Add Lesson</Link>
-                    </div>
+
+                            <Link to='/addlesson' className="btn btn-sm btn-primary">
+                                <i className="fa fa-dot-circle-o" />Add Lesson</Link>
+                        </div>
                     </div>
                     <Pagination></Pagination><br></br><br></br><br></br><br></br><br></br><br></br>
                 </div>

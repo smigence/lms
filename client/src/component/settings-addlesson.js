@@ -4,7 +4,6 @@ import AutoRedirect from './Redirect';
 import Sidebar from './SideBar';
 import Header from './Header';
 import BreadCrum from './managementcourse-header';
-import Element from './statics-viewmore-element';
 import AddLesson from './settings-lesson';
 import AddStudent from './settings-student';
 
@@ -17,9 +16,8 @@ class AddLessonContent extends React.Component {
                 <Sidebar></Sidebar>
                 <div className="main-panel" >
                     <Header headername='Settings'></Header>
-                    <BreadCrum></BreadCrum>
                     <div className="thumbnails">
-                        <div className="col-sm-12 col-xl-6">
+                        <div className="col-sm-12 col-xl-6 m-t-20">
                             <div className="card">
                                 <div className="card-header">
                                     <i className="fa fa-align-justify"></i> Settings Group

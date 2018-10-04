@@ -135,13 +135,10 @@ class App extends Component {
           <Switch>
             <Route exact path='/' render={(props) => (<AsyncCp.Home {...props} courses={this.state.coursesLeaner} />)}></Route>
             <Route exact path='/management-course' render={(props) => <AsyncCp.ManagementCourse {...props} courses={this.state.coursesManager} />}></Route>
-            <Route exact path='/list-lesson' component={AsyncCp.Lesson}></Route>
-            <Route exact path='/overview/:id/:type' render={(props) => <AsyncCp.Overview {...props} 
-            coursesLeaner={this.state.coursesLeaner} coursesManager={this.state.coursesManager} account={this.state.account} />}></Route>
+            <Route exact path='/overview/:id/:type' render={(props) => <AsyncCp.Overview {...props}
+              coursesLeaner={this.state.coursesLeaner} coursesManager={this.state.coursesManager} account={this.state.account} 
+              />}></Route>
             <Route exact path='/viewmore' component={AsyncCp.Viewmore}></Route>
-            <Route exact path='/statics' component={AsyncCp.Statics}></Route>
-            <Route exact path='/settings' render={(props) => (<AsyncCp.Settings {...props} 
-            onFileChange={this.fileChangeHandle} uploadClick={this.uploadClickHandle} uploadResult={this.state.uploadResult}/>)}></Route>
             <Route exact path='/addlesson' component={AsyncCp.AddLesson}></Route>
             <Route path='*' component={() => { return <div>Page not found</div> }}></Route>
           </Switch>
