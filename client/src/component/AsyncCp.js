@@ -53,8 +53,13 @@ const AddLesson = Loadable({
   loading: LoadingPage
 });
 
+const EditLesson = Loadable({
+  loader: () => import("./settings-editlesson"),
+  loading: LoadingPage
+});
+
 export default {
   Login, Home, Course, Lesson, Overview,
   Statics, Settings, Viewmore, ManagementCourse,
-  AddLesson
+  AddLesson, EditLesson
 };

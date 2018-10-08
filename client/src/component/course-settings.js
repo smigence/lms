@@ -9,7 +9,6 @@ class Settings extends React.Component {
 
         const coursename = 'None';
         const coursedescription = 'None';
-        // console.log(this.props.id);
         return (
             <div className="content thumbnails">
                 <div className="col-sm-12 col-xl-6">
@@ -49,7 +48,11 @@ class Settings extends React.Component {
                                             idcourse={this.props.idcourse}>
                                         </General>
                                     </div>
-                                    <div className="tab-pane" id="lesson" role="tabpanel"><AddLesson></AddLesson></div>
+                                    <div className="tab-pane" id="lesson" role="tabpanel">
+                                        <AddLesson
+                                            idManageCourse={this.props.idManageCourse}>
+                                        </AddLesson>
+                                    </div>
                                     <div className="tab-pane" id="student" role="tabpanel"><AddStudent></AddStudent></div>
                                 </div>
                             </div>

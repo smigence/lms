@@ -46,7 +46,8 @@ class Overview extends React.Component {
                                 onGeneralSettingsSubmit={this.props.onGeneralSettingsSubmit}
                                 coursenameChangeHandle={this.props.coursenameChangeHandle}
                                 coursedescriptionChangeHandle={this.props.coursedescriptionChangeHandle}
-                                idcourse={courses[this.props.match.params.id].idCourse}>
+                                idcourse={courses[this.props.match.params.id].idCourse}
+                                idManageCourse={courses[this.props.match.params.id].idManageCourse}>
                             </Settings>
                         </div>
                     </div>

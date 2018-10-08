@@ -17,7 +17,7 @@ class Homepage extends React.Component {
         <Sidebar preloca={this.props.location.pathname}></Sidebar>
         <div className="main-panel" >
           <Header headername='My Course'></Header>
-          <div className="thumbnails">
+          <div className="thumbnails row">
             {this.props.courses.length?this.props.courses.map((course,index) => 
                 <Course key = {index} hrefLink={hrefLink} course={course} imageLink={imageLink} index={index}></Course>)
                 :<div className="login102-form-title p-b-34 m-b-20">You have no course</div>}
