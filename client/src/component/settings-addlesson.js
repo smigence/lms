@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import AutoRedirect from './Redirect';
 import Sidebar from './SideBar';
 import Header from './Header';
-import BreadCrum from './managementcourse-header';
 import AddLesson from './settings-lesson';
 import AddStudent from './settings-student';
 
@@ -49,7 +48,7 @@ class AddLessonContent extends React.Component {
                                                                 </div>
 
                                                                 <div className="form-group row">
-                                                                    <label className="col-md-3 col-form-label" htmlFor="file-input">File input</label>
+                                                                    <label className="col-md-3 col-form-label" htmlFor="file-input">File upload: </label>
                                                                     <div className="col-md-9">
                                                                         <input id="file-input" type="file" name="file-input" />
                                                                     </div>

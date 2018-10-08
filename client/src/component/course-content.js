@@ -1,7 +1,4 @@
 import React from 'react';
-import Sidebar from './SideBar';
-import Header from './Header';
-import BreadCrum from './mycourse-header';
 import GroupContent from './lesson-groupcontent';
 
 

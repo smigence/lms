@@ -2,10 +2,12 @@ var express = require('express');
 var mysql = require('mysql');
 var cors = require('cors');
 var sqlString = require('sqlstring');
+var fs = require('fs');
 
 
 
 var router = express.Router();
+var app = express();
 router.use(cors());
 router.use(express.json());
 
@@ -117,7 +119,7 @@ function getDataByTwoId (sql,link) {
     sql = sqlString.format(sql,[req.params.id1,req.params.id2])
     con.query(sql,(err,result,fields) => {
       if(err) throw err;
-      console.log(result);
+      console.log(result  );
       if(result[0]===undefined) res.json({notification: "Data not found"})
       else 
         res.json(result);
