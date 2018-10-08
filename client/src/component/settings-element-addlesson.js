@@ -31,10 +31,8 @@ class Element extends React.Component {
                     </div>
                 </td>
                 <td>
-                    <Link to='/editlesson' className="btn btn-info">
+                    <Link to='/editlesson/:id' className="btn btn-info">
                         <i className="fa fa-edit"></i>
-                        {/* <input className="switch-input" type="checkbox" defaultChecked />
-                        <span className="switch-slider" data-checked="&#x2713" data-unchecked="&#x2715" /> */}
                     </Link>
                 </td>
             </tr>

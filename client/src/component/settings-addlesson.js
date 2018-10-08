@@ -6,7 +6,13 @@ import Header from './Header';
 import AddLesson from './settings-lesson';
 import AddStudent from './settings-student';
 
+
+
 class AddLessonContent extends React.Component {
+    onAddLessonSubmitClick = (eve) => {
+        this.props.onAddLessonSubmitClick(eve, this.props.match.params.id);
+    }
+
     render() {
 
         if (this.props.account === "") ReactDOM.render(<AutoRedirect mode={0} />, document.getElementById('root'));
@@ -33,39 +39,30 @@ class AddLessonContent extends React.Component {
                                                             <strong>Add</strong> Lesson</div>
                                                         <div className="card-body">
                                                             <form className="form-horizontal" method="post" encType="multipart/form-data">
-                                                                <div className="form-group row">
-                                                                    <label className="col-md-3 col-form-label" htmlFor="text-input">Lesson Name: </label>
-                                                                    <div className="col-md-9">
-                                                                        <input className="form-control" id="text-input" type="text" name="text-input" placeholder="Text" />
-                                                                    </div>
-                                                                </div>
+
 
                                                                 <div className="form-group row">
                                                                     <label className="col-md-3 col-form-label" htmlFor="textarea-input">Lesson Description: </label>
                                                                     <div className="col-md-9">
-                                                                        <textarea className="form-control" id="textarea-input" name="textarea-input" rows={9} placeholder="Content.." defaultValue={""} />
+                                                                        <textarea className="form-control" id="textarea-input" name="textarea-input"
+                                                                            rows={9} placeholder="Content.." defaultValue={""} onChange={this.props.lessonDescriptionChangeHandle} />
                                                                     </div>
                                                                 </div>
-
                                                                 <div className="form-group row">
                                                                     <label className="col-md-3 col-form-label" htmlFor="file-input">File upload: </label>
                                                                     <div className="col-md-9">
-                                                                        <input id="file-input" type="file" name="file-input" />
-                                                                    </div>
-                                                                </div>
-                                                                <div className="form-group row">
-                                                                    <label className="col-md-3 col-form-label" htmlFor="file-multiple-input">Multiple File input</label>
-                                                                    <div className="col-md-9">
-                                                                        <input id="file-multiple-input" type="file" name="file-multiple-input" multiple />
+                                                                        <input id="file-input" type="file" name="file-input" onChange={this.props.fileChangeHandle} />
                                                                     </div>
                                                                 </div>
                                                             </form>
                                                         </div>
                                                         <div className="card-footer">
-                                                            <button className="btn btn-sm btn-primary" type="submit">
+                                                            <button className="btn btn-sm btn-primary" type="submit"
+                                                                onClick={this.onAddLessonSubmitClick}>
                                                                 <i className="fa fa-dot-circle-o" /> Submit</button>
                                                             <button className="btn btn-sm btn-danger" type="reset">
                                                                 <i className="fa fa-ban" /> Reset</button>
+                                                            <i className={this.props.uploadResult}></i>
                                                         </div>
                                                     </div>
                                                 </div>

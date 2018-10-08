@@ -31,13 +31,6 @@ class General extends React.Component {
                                         defaultValue={this.props.coursedescription} />
                                 </div>
                             </div>
-                            {/* <label className="col-md-3 col-form-label" htmlFor="file-input">Course's image: </label>
-                            <div className="col-md-9">
-                                <input id="file-input" type="file" name="file-input" 
-                                onChange={this.props.onFileChange}/>
-                                <button  onClick={this.props.uploadClick} className="btn btn-sm btn-primary" type="submit">Upload</button>
-                                <i className={this.props.uploadResult}/>
-                            </div> */}
                             <div className="card-footer">
                                 <button className="btn btn-sm btn-primary" type="submit" onClick={this.onGeneralSettingsSubmit}>
                                     <i className="fa fa-dot-circle-o" /> Submit</button>

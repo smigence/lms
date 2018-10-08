@@ -4,6 +4,7 @@ var cors = require('cors');
 var sqlString = require('sqlstring');
 var fs = require('fs');
 
+var path = require('path');
 
 
 var router = express.Router();
@@ -27,101 +28,101 @@ function getData(sql, link) {
   });
 }
 
-function getCourseLearnById (link) {  
-  router.get(link, function(req, res, next) {
+function getCourseLearnById(link) {
+  router.get(link, function (req, res, next) {
     sql = sqlString.format("SELECT * FROM tbl_course, tbl_learner_course, tbl_user " +
-    " WHERE tbl_course.idCourse = tbl_learner_course.idCourse " +
-    " and tbl_user.idUser = tbl_learner_course.idLearner " +
-    " and tbl_user.idUser = ?",[req.params.id])
-    con.query(sql,(err,result,fields) => {
-      if(err) throw err;
+      " WHERE tbl_course.idCourse = tbl_learner_course.idCourse " +
+      " and tbl_user.idUser = tbl_learner_course.idLearner " +
+      " and tbl_user.idUser = ?", [req.params.id])
+    con.query(sql, (err, result, fields) => {
+      if (err) throw err;
       console.log(result);
-      if(result[0]===undefined) res.json({notification: "Data not found"})
-      else 
+      if (result[0] === undefined) res.json({ notification: "Data not found" })
+      else
         res.json(result);
     });
   });
 }
 
-function getCourseManageById (link) {  
-  router.get(link, function(req, res, next) {
+function getCourseManageById(link) {
+  router.get(link, function (req, res, next) {
     sql = sqlString.format("SELECT * FROM tbl_course, tbl_management_course," +
-    " tbl_user WHERE tbl_course.idCourse = tbl_management_course.idCourse " +
-    " and tbl_user.idUser = tbl_management_course.idManage" +
-    " and tbl_user.idUser = ? ",[req.params.id])
-    con.query(sql,(err,result,fields) => {
-      if(err) throw err;
+      " tbl_user WHERE tbl_course.idCourse = tbl_management_course.idCourse " +
+      " and tbl_user.idUser = tbl_management_course.idManage" +
+      " and tbl_user.idUser = ? ", [req.params.id])
+    con.query(sql, (err, result, fields) => {
+      if (err) throw err;
       console.log(result);
-      if(result[0]===undefined) res.json({notification: "Data not found"})
-      else 
+      if (result[0] === undefined) res.json({ notification: "Data not found" })
+      else
         res.json(result);
     });
   });
 }
 
-function getCourseDetailById (link) {  
-  router.get(link, function(req, res, next) {
+function getCourseDetailById(link) {
+  router.get(link, function (req, res, next) {
     sql = sqlString.format("SELECT * FROM tbl_course,tbl_management_course, " +
-    " tbl_lesson WHERE tbl_course.idCourse = " +
-    " tbl_management_course.idCourse " +
-    " and tbl_management_course.idManageCourse = " +
-    " tbl_lesson.idManageCourse " +
-    " and tbl_management_course.idManageCourse =? ",[req.params.id])
-    con.query(sql,(err,result,fields) => {
-      if(err) throw err;
+      " tbl_lesson WHERE tbl_course.idCourse = " +
+      " tbl_management_course.idCourse " +
+      " and tbl_management_course.idManageCourse = " +
+      " tbl_lesson.idManageCourse " +
+      " and tbl_management_course.idManageCourse =? ", [req.params.id])
+    con.query(sql, (err, result, fields) => {
+      if (err) throw err;
       console.log(result);
-      if(result[0]===undefined) res.json({notification: "Data not found"})
-      else 
+      if (result[0] === undefined) res.json({ notification: "Data not found" })
+      else
         res.json(result);
     });
   });
 }
 
-function getLessonById (link) {  
-  router.get(link, function(req, res, next) {
+function getLessonById(link) {
+  router.get(link, function (req, res, next) {
     sql = sqlString.format("SELECT * FROM tbl_course,tbl_lesson_learner," +
-    " tbl_learner_course, tbl_lesson, " +
-    " tbl_file " +
-    " WHERE tbl_lesson_learner.idCourseLearner =" +
-    " tbl_learner_course.idLearnerCourse " +
-    " and tbl_learner_course.idCourse = tbl_course.idCourse " +
-    " and tbl_lesson_learner.idFile = tbl_file.idFile " +
-    " and tbl_file.idLesson = tbl_lesson.idLesson" +
-    " and tbl_learner_course.idLearnerCourse = ?",[req.params.id])
-    con.query(sql,(err,result,fields) => {
-      if(err) throw err;
+      " tbl_learner_course, tbl_lesson, " +
+      " tbl_file " +
+      " WHERE tbl_lesson_learner.idCourseLearner =" +
+      " tbl_learner_course.idLearnerCourse " +
+      " and tbl_learner_course.idCourse = tbl_course.idCourse " +
+      " and tbl_lesson_learner.idFile = tbl_file.idFile " +
+      " and tbl_file.idLesson = tbl_lesson.idLesson" +
+      " and tbl_learner_course.idLearnerCourse = ?", [req.params.id])
+    con.query(sql, (err, result, fields) => {
+      if (err) throw err;
       console.log(result);
-      if(result[0]===undefined) res.json({notification: "Data not found"})
-      else 
+      if (result[0] === undefined) res.json({ notification: "Data not found" })
+      else
         res.json(result);
     });
   });
 }
 
-function getStaticById (link) {  
-  router.get(link, function(req, res, next) {
+function getStaticById(link) {
+  router.get(link, function (req, res, next) {
     sql = sqlString.format("SELECT *" +
-    " FROM tbl_course, tbl_learner_course" +
-    " WHERE  tbl_course.idCourse = tbl_learner_course.idCourse " +
-    " and tbl_course.idCourse =?",[req.params.id])
-    con.query(sql,(err,result,fields) => {
-      if(err) throw err;
-      console.log(result);
-      if(result[0]===undefined) res.json({notification: "Data not found"})
-      else 
+      " FROM tbl_course, tbl_learner_course" +
+      " WHERE  tbl_course.idCourse = tbl_learner_course.idCourse " +
+      " and tbl_course.idCourse =?", [req.params.id])
+    con.query(sql, (err, result, fields) => {
+      if (err) throw err;
+      // console.log(result);
+      if (result[0] === undefined) res.json({ notification: "Data not found" })
+      else
         res.json(result);
     });
   });
 }
 
-function getDataByTwoId (sql,link) {
-  router.get(link, function(req, res, next) {
-    sql = sqlString.format(sql,[req.params.id1,req.params.id2])
-    con.query(sql,(err,result,fields) => {
-      if(err) throw err;
-      console.log(result  );
-      if(result[0]===undefined) res.json({notification: "Data not found"})
-      else 
+function getDataByTwoId(sql, link) {
+  router.get(link, function (req, res, next) {
+    sql = sqlString.format(sql, [req.params.id1, req.params.id2])
+    con.query(sql, (err, result, fields) => {
+      if (err) throw err;
+      // console.log(result);
+      if (result[0] === undefined) res.json({ notification: "Data not found" })
+      else
         res.json(result);
     });
   });
@@ -136,11 +137,11 @@ function postDataLogin(link) {
       if (err) throw err;
       if (result[0] !== undefined) {
         res.send(result[0]);
-        console.log("Y");
+        // console.log("Y");
       }
       else {
         res.send("false");
-        console.log("N");
+        // console.log("N");
       }
     })
   });
@@ -148,10 +149,10 @@ function postDataLogin(link) {
 
 function UpdateCourse(link) {
   router.post(link, (req, res, next) => {
+    // console.log(req.body, req.params);
     const account = req.body;
-    const sql = sqlString.format("UPDATE tbl_course SET `title`=?,`description`=?" +
-      " WHERE tbl_course.idCourse =?",
-      [account.title, account.descript, req.params.id]);
+    const sql = sqlString.format("UPDATE tbl_course SET `title`=?,`description`=?  WHERE tbl_course.idCourse = ?",
+      [account.coursename, account.coursedescription, req.params.id]);
     con.query(sql, (err, result, fields) => {
       if (err) throw err;
       res.send("Yes");
@@ -162,20 +163,47 @@ function UpdateCourse(link) {
 
 function UpdateUpload(link) {
   router.post('/', (req, res) => {
-    console.log(req.files.selectedfile);
     if (req.files.selectedfile) {
-      var file = req.files.selectedfile.name,
-        filename = file.name;
-        req.files.selectedfile.mv("./upload/" + req.files.selectedfile.name, function (err) {
+      let file = req;
+      req.files.selectedfile.mv("./upload/" + file, function (err) {
         if (err) {
-          console.log(err);
+          // console.log(err);
           res.json(err);
         }
         else {
-          res.json('ok');
+          const sql = sqlString.format("INSERT INTO `tbl_file` (`idFile`, `type`, `name`, `link`, `idLesson`) VALUES (NULL, ?, ?, ?, ?);",
+            ['video', file.files.selectedfile.name, "./upload/" + file.files.selectedfile.name, file.body.idlesson]);
+          con.query(sql, (err, result, fields) => {
+            if (err) throw err;
+          }
+          )
+          res.send("ok");
         }
       })
     }
+  });
+}
+
+function AddLesson(link) {
+  router.post(link, (req, res, next) => {
+    console.log(req.body, req.params);
+    const lesson = req.body;
+    const sql = sqlString.format("INSERT INTO tbl_lesson (`idLesson`, `description`, `date_end`, `idManageCourse`) VALUES (NULL, ? , '2018-10-05', ?)",
+      [lesson.lessonDescription, req.params.id]);
+    con.query(sql, (err, result, fields) => {
+      if (err) throw err;
+      else {
+        const sql = sqlString.format("SELECT * FROM tbl_lesson ORDER BY idLesson DESC LIMIT 1 ");
+        con.query(sql, (err, result, fields) => {
+          if (err) throw err;
+          else {
+            res.send(result);
+          }
+        }
+        )
+      }
+    }
+    )
   });
 }
 
@@ -192,6 +220,7 @@ con.connect(err => {
   //getDataByTwoId(getStaticDetail, "/staticDetail/:id1/:id2")
   UpdateCourse("/updateCourse/:id")
   UpdateUpload("/");
+  AddLesson("/addlesson/:id")
 });
 
 module.exports = router;

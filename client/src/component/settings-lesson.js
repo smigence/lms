@@ -12,8 +12,6 @@ class AddLesson extends React.Component {
         const Email = 'test1234@kis-v.com.vn';
         const Student = 'Nascetur nunc varius commodo';
         const Progress = '40%';
-
-
         return (
             <div className="col-sm-12 col-xl-6 m-t-20">
                 <div className="col-sm-12 col-xl-6">
@@ -41,7 +39,7 @@ class AddLesson extends React.Component {
                         </table>
                         <div className="card-footer">
 
-                            <Link to='/addlesson' className="btn btn-sm btn-primary">
+                            <Link to={'/addlesson/' + this.props.idManageCourse} className="btn btn-sm btn-primary">
                                 <i className="fa fa-dot-circle-o" />Add Lesson</Link>
                         </div>
                     </div>

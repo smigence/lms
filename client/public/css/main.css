@@ -845,7 +845,7 @@ input.input100 {
       }
 
 
-    input[type="submit"],
+input[type="submit"],
   input[type="reset"],
   input[type="button"],
   button,
@@ -868,6 +868,33 @@ input.input100 {
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
+
+  }
+
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"],
+  button,
+  .button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    width: 100%;
+    background-color: #70c7be;
+    border-radius: 4px;
+    border: 0;
+    color: #ffffff !important;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    height: 2.85em;
+    line-height: 2.95em;
+    padding: 0 1.5em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+
   }
 
     input[type="submit"]:hover,
