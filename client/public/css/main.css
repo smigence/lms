@@ -530,7 +530,7 @@ input.input100 {
 .col-sm-13 {
     margin: 20px;
     max-width: 30%;
-    max-height: : 30%;
+    max-height: 30%;
     float: left;
     display: inline;
   }
@@ -815,12 +815,6 @@ input.input100 {
       width: 30%;
     }
 
-      
- }
-
-
-    
-
 .image {
     border-radius: 4px;
     border: 0;
@@ -920,10 +914,6 @@ input.input100 {
       .button.style3:active {
         background-color: #8f6bc9;
       }
-
-    }
-
-
 .sidebar .nav p,
 .off-canvas-sidebar .nav p {
     margin: 0;

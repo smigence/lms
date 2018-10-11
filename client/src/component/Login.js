@@ -11,11 +11,11 @@ class Login extends React.Component {
             <div className="limiter">
                 <div className="container-login100">
                     <div className="wrap-login100">
-                        <div className="login100-form validate-form">
+                        <form className="login100-form validate-form">
 
                             <span className="login100-form-title p-b-34 m-b-20">
                                 LMS Login
-                        </span>
+                            </span>
                             <span className="login101-form-title p-b-20 m-b-20">{this.props.loginResult}</span>
                             <p>Email:</p>
                             <div className="wrap-input100 m-b-20 validate-input m-b-20" data-validate="Type user name">
@@ -33,7 +33,7 @@ class Login extends React.Component {
                                     Sign in
                             </button>
                             </div><br></br>
-                        </div>
+                        </form>
                         <div className="login100-more" style={{ backgroundImage: 'url("images/bg-01.jpg")' }}></div>
                     </div>
                 </div>

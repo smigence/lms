@@ -29,7 +29,7 @@ class Header extends React.Component {
                             <li>
                                 <a href="/">
                                     <i className="ti-settings"></i>
-                                    <p>Log Out</p>
+                                    <p onClick={this.props.onLogoutClick}>Log Out</p>
                                 </a>
                             </li>
                         </ul>

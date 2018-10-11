@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import conf from './component/Config';
 import axios from 'axios';
 import AsyncCp from './component/AsyncCp';
+import { connect } from 'react-redux';
 
 const instanceAxios = axios.create({
   baseURL: 'http://localhost:3001'
@@ -14,13 +15,10 @@ class App extends Component {
     this.state = {
       mailAddress: "",
       password: "",
-      loginResult: "",
-      account: "",
-      coursesLeaner: [],
-      coursesManager: [],
       file: {},
       coursename: "",
-      coursedescription: ""
+      coursedescription: "",
+      lessons: []
     };
 
     this.emailChangeHandle = this.emailChangeHandle.bind(this);
@@ -33,6 +31,30 @@ class App extends Component {
     this.onGeneralSettingsSubmit = this.onGeneralSettingsSubmit.bind(this);
     this.coursenameChangeHandle = this.coursenameChangeHandle.bind(this);
     this.coursedescriptionChangeHandle = this.coursedescriptionChangeHandle.bind(this);
+    this.courseClickHandle = this.courseClickHandle.bind(this);
+  }
+
+  handleLogoutClick() {
+    console.log("aaaaaaaaaaa");
+    this.props.dispatch({
+      account: "",
+      coursesLeaner: [],
+      coursesManager: [],
+      type: "logout"
+    });
+  }
+
+  courseClickHandle(id) {
+    fetch("/lesson/" + id).then(res => res.json())
+      .then(lessons => {
+        if (lessons.notification === undefined) {
+          return this.setState({
+            lessons: lessons
+          });
+        }
+      })
+      .catch(err =>
+        console.log("Connect fail: " + err));
   }
 
   fileChangeHandle(event) {
@@ -64,38 +86,51 @@ class App extends Component {
                          });
    }*/
 
-  submitClickHandle = () => {
+  submitClickHandle = (e) => {
+    e.preventDefault();
     console.log(this.state.mailAddress + " " + this.state.password);
     instanceAxios.post(conf.login_api, { email: this.state.mailAddress, password: this.state.password })
       .then(res => {
         if (res.data === false) {
-          this.setState({ loginResult: "Login Unsuccessfully" });
+          this.props.dispatch({
+            loginResult: "Login Unsuccessfully",
+            type: "LoginFail"
+          });
         }
         else {
-          //const callback = this.changeState;
           const account = res.data;
           let link = /courseLearn/ + account.idUser;
 
           fetch(link).then(res => res.json())
             .then(courses => {
-              if (courses.notification === undefined) return this.setState({
+              if (courses.notification === undefined) this.props.dispatch({
                 loginResult: "",
                 account: account,
-                coursesLeaner: courses
+                coursesLeaner: courses,
+                type: "getCoursesLeanerSuccessfully"
               });
-              else return this.setState({ loginResult: "", account: account })
+              else this.props.dispatch({
+                loginResult: "",
+                account: account,
+                type: "getCoursesLeanerFail"
+              });
             });
 
           link = /courseManage/ + account.idUser;
 
           fetch(link).then(res => res.json())
             .then(courses => {
-              if (courses.notification === undefined) return this.setState({
+              if (courses.notification === undefined) this.props.dispatch({
                 loginResult: "",
                 account: account,
-                coursesManager: courses
+                coursesManager: courses,
+                type: "getCoursesManagerSuccessfully"
               });
-              else return this.setState({ loginResult: "", account: account })
+              else this.props.dispatch({
+                loginResult: "",
+                account: account,
+                type: "getCoursesManagerFail"
+              })
             });
 
         }
@@ -106,14 +141,14 @@ class App extends Component {
 
   onGeneralSettingsSubmit = (eve, idcourse, defaultname, defaultdescription) => {
     // eve.preventDefault();
-    this.state.coursename == '' ?  this.state.coursename = defaultname : true;
-    this.state.coursedescription == '' ?  this.state.coursedescription = defaultdescription : true;
+    this.state.coursename === '' ? this.state.coursename = defaultname : true;
+    this.state.coursedescription == '' ? this.state.coursedescription = defaultdescription : true;
     instanceAxios.post(conf.update_course_general_api + '/' + idcourse, {
       coursename: this.state.coursename,
       coursedescription: this.state.coursedescription
     })
       .then(res => {
-        if(res.data == 'Yes') console.log('Ok');
+        if (res.data == 'Yes') console.log('Ok');
         else console.log('lel');
       }).catch(errr => {
         console.log("Fail");
@@ -146,14 +181,15 @@ class App extends Component {
    }*/
 
   render() {
-    if (this.state.account === "") {
+    console.log(this.props.account);
+    if (this.props.account === "") {
       return (
         <Router >
           <Switch>
             <Route exact path='/' render={(props) =>
               (<AsyncCp.Login {...props} email={this.state.email} password={this.state.password}
                 onEmailChange={this.emailChangeHandle} onPasswordChange={this.passwordChangeHandle}
-                submitClick={this.submitClickHandle} loginResult={this.state.loginResult} />)}></Route>
+                submitClick={this.submitClickHandle} loginResult={this.props.loginResult} />)}></Route>
             <Redirect from='*' to='/' />
           </Switch>
         </Router>
@@ -163,13 +199,16 @@ class App extends Component {
       return (
         <Router >
           <Switch>
-            <Route exact path='/' render={(props) => (<AsyncCp.Home {...props} courses={this.state.coursesLeaner} />)}></Route>
-            <Route exact path='/management-course' render={(props) => <AsyncCp.ManagementCourse {...props} courses={this.state.coursesManager} />}></Route>
+            <Route exact path='/' render={(props) => (<AsyncCp.Home {...props} courses={this.props.coursesLeaner}
+              onCourseClick={this.courseClickHandle}
+              onLogoutClick={this.handleLogoutClick} />)}></Route>
+            <Route exact path='/management-course' render={(props) => <AsyncCp.ManagementCourse {...props} courses={this.props.coursesManager} />}></Route>
             <Route exact path='/overview/:id/:type' render={(props) => <AsyncCp.Overview {...props}
-              coursesLeaner={this.state.coursesLeaner} coursesManager={this.state.coursesManager} account={this.state.account}
+              coursesLeaner={this.props.coursesLeaner} coursesManager={this.props.coursesManager} account={this.props.account}
               onGeneralSettingsSubmit={this.onGeneralSettingsSubmit}
               coursenameChangeHandle={this.coursenameChangeHandle}
-              coursedescriptionChangeHandle={this.coursedescriptionChangeHandle} />}>
+              coursedescriptionChangeHandle={this.coursedescriptionChangeHandle}
+              lessons={this.state.lessons} />}>
             </Route>
             <Route exact path='/viewmore' component={AsyncCp.Viewmore}></Route>
             <Route exact path='/addlesson' component={AsyncCp.AddLesson}></Route>
@@ -181,4 +220,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    ...state
+  }
+}
+
+export default connect(mapStateToProps)(App);

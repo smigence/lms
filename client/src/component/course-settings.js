@@ -6,10 +6,6 @@ import AddStudent from './settings-student';
 
 class Settings extends React.Component {
     render() {
-
-        const coursename = 'None';
-        const coursedescription = 'None';
-        // console.log(this.props.id);
         return (
             <div className="content thumbnails">
                 <div className="col-sm-12 col-xl-6">

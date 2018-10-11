@@ -7,7 +7,6 @@ import Statics from './course-statics';
 import Settings from './course-settings';
 
 class Overview extends React.Component {
-
     render() {
         let courses = this.props.coursesManager;
         if (this.props.match.params.type === '1') {
@@ -24,7 +23,7 @@ class Overview extends React.Component {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" data-toggle="tab" href="#content" role="tab"
-                                aria-controls="content">Course Contents</a>
+                                aria-controls="content" >Course Contents</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" data-toggle="tab" href="#statics" role="tab" aria-controls="statics">Statics</a>
@@ -38,7 +37,7 @@ class Overview extends React.Component {
                             <GroupContent groupname="Title" groupcontent={courses[this.props.match.params.id].title}></GroupContent>
                             <GroupContent groupname="Description" groupcontent={courses[this.props.match.params.id].description}></GroupContent>
                         </div>
-                        <div className="tab-pane" id="content" role="tabpanel"><Lesson></Lesson></div>
+                        <div className="tab-pane" id="content" role="tabpanel"><Lesson lessons={this.props.lessons} /></div>
                         <div className="tab-pane" id="statics" role="tabpanel"><Statics></Statics></div>
                         <div className="tab-pane" id="settings" role="tabpanel">
                             <Settings coursename={courses[this.props.match.params.id].title}
